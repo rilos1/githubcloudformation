@@ -30,5 +30,5 @@ jobs:
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
         name: MyStack
-        template: infrastructure.yaml
+        template: https://github.com/rilos1/githubcloudformation/blob/main/infrastructure.yml
 
