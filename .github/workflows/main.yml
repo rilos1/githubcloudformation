@@ -7,14 +7,28 @@ on:
         description: 'AWS Region'
         required: true
         default: 'ap-southeast-2'
-#        keypair:
-#         description: 'SSH Key Pair'
-#         required: true
-
+        
 jobs:
-  - name: Deploy to AWS CloudFormation
-    uses: aws-actions/aws-cloudformation-github-deploy@v1
-    with:
-      name: MyStack
-      template: infrastructure.yaml
+  cluster:
+    name: Deploy stack to AWS
+    runs-on: ubuntu-latest
+    outputs:
+      env-name: ${{ steps.env-name.outputs.environment }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      id: creds
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ github.event.inputs.region}}
+
+    - name: Deploy to AWS CloudFormation
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: MyStack
+        template: infrastructure.yaml
 
