@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: External, public facing load balancer, for forwarding public traffic to containers
+
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: cloudformationgithubs3bucket
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: d22904c7-556b-484b-9a6b-b4804e696bcc
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 21ec06a7-c68e-4e3e-9650-058df276fccd
+    DependsOn:
+      - S3Bucket
