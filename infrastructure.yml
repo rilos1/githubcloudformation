@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: External, public facing load balancer, for forwarding public traffic to containers
+Description: infrastructure resource for React application
 
 Resources:
   S3Bucket:
