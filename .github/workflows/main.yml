@@ -10,7 +10,7 @@ on:
         push:
         pull_request:
         commit:
-          branches: [ master ]
+          branches: [ main ]
         
 jobs:
   S3Bucket:
