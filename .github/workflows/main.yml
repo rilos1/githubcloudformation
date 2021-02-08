@@ -9,7 +9,7 @@ on:
         default: 'ap-southeast-2'
         
 jobs:
-  cluster:
+  S3Bucket:
     name: Deploy stack to AWS
     runs-on: ubuntu-latest
     outputs:
