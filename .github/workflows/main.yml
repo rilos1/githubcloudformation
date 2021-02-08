@@ -7,6 +7,10 @@ on:
         description: 'AWS Region'
         required: true
         default: 'ap-southeast-2'
+        push:
+        pull_request:
+        commit:
+          branches: [ master ]
         
 jobs:
   S3Bucket:
